@@ -12,7 +12,6 @@ const NavBar = () => {
     { label: "About me", href: "/about-me" },
     { label: "instagram", href: "https://www.instagram.com/henrqaz/" },
   ];
-  console.log(currentPath);
 
   return (
     <nav className="flex space-x-6 broder-b mb-5 px-5 h-14 items-center">
