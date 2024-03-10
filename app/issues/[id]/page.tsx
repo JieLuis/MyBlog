@@ -1,7 +1,9 @@
 import prisma from "@/prisma/client";
 import { Prisma } from "@prisma/client";
+import { Card } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   params: { id: string };
@@ -17,9 +19,11 @@ const IssueDeatilPage = async ({ params }: Props) => {
   return (
     <div>
       <div>{issue?.title}</div>
-      <div>{issue?.description}</div>
       <div>{issue?.status}</div>
       <div>{issue?.createdAt.toDateString()}</div>
+      <Card className="prose">
+        <ReactMarkdown>{issue?.description}</ReactMarkdown>
+      </Card>
     </div>
   );
 };
