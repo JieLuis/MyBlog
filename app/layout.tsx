@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Theme appearance="light" accentColor="sky" radius="small">
           <NavBar />
-          <main className="p-5">
+          <main className="p-5 bg-teal-50">
             <Container>{children}</Container>
           </main>
           <ThemePanel />

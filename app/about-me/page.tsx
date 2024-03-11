@@ -16,6 +16,9 @@ const AboutMePage = () => {
     "NuxtJS",
   ];
   const colors = ["red", "yellow", "green", "blue", "lime", "amber"];
+  function generateRandomColor() {
+    return `text-${colors[Math.floor(Math.random() * colors.length)]}-400`;
+  }
 
   return (
     <>
@@ -36,22 +39,11 @@ const AboutMePage = () => {
         {skills.map((skill) => (
           <Flex gap="2">
             <span></span>
-            <span
-              key={skill}
-              className={`text-${
-                colors[Math.floor(Math.random() * colors.length)]
-              }-400`}
-            >
+            <span key={skill} className={generateRandomColor()}>
               {" "}
               {skill}{" "}
             </span>
-            <span
-              className={`text-${
-                colors[Math.floor(Math.random() * colors.length)]
-              }-900`}
-            >
-              |
-            </span>
+            <span className={generateRandomColor()}>|</span>
           </Flex>
         ))}
       </Flex>
