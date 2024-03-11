@@ -15,4 +15,13 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/typography")],
+  safelist: [
+    "text-green-400",
+    "text-red-400",
+    "text-yellow-400",
+    "text-blue-400",
+    "text-amber-400",
+    "text-lime-400",
+    // Add more dynamically generated class names as needed
+  ],
 };

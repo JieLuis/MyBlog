@@ -9,6 +9,7 @@ import classNames from "classnames";
 const NavBar = () => {
   const currentPath = usePathname();
   const links = [
+    { label: "Blogs", href: "/blogs" },
     { label: "About me", href: "/about-me" },
     { label: "instagram", href: "https://www.instagram.com/henrqaz/" },
   ];
