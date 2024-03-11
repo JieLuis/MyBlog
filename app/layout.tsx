@@ -25,7 +25,6 @@ export default function RootLayout({
           <main className="p-5 bg-teal-50">
             <Container>{children}</Container>
           </main>
-          <ThemePanel />
         </Theme>
       </body>
     </html>
