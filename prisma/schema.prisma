@@ -61,7 +61,7 @@ model User {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
-  sessions      Session[]
+  sessions      Session[] 
   assignedIssue Issue[]
 }
 
