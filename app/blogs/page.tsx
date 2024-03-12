@@ -5,9 +5,12 @@ import prisma from "@/prisma/client";
 import delay from "delay";
 import IssueActions from "./IssueActions";
 
+import authOptions from "../auth/AuthOptions";
+
 const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
-  await delay(2000);
+
+  await delay(1000);
 
   return (
     <div className="space-y-3 p-5">

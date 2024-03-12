@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { title } from "process";
 import prisma from "@/prisma/client";
 import { issueSchema } from "@/app/validationSchema";
+import authOptions from "@/app/auth/AuthOptions";
+import { getServerSession } from "next-auth";
 
 export async function POST(request: NextRequest) {
+  const session = getServerSession(authOptions);
+  if (!session) return NextResponse.json({}, { status: 401 });
+
   const body = await request.json();
   const validation = issueSchema.safeParse(body);
 
@@ -15,4 +19,7 @@ export async function POST(request: NextRequest) {
   });
 
   return NextResponse.json(newIssue, { status: 201 });
+}
+function getSererSession(authOptions: any) {
+  throw new Error("Function not implemented.");
 }
