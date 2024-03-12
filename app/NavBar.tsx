@@ -5,8 +5,11 @@ import Link from "next/link";
 import SearchInput from "./components/SearchInput";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
+import { Box } from "@radix-ui/themes";
+import { useSession } from "next-auth/react";
 
 const NavBar = () => {
+  const { status, data: session } = useSession();
   const currentPath = usePathname();
   const links = [
     { label: "Blogs", href: "/blogs" },
@@ -22,20 +25,29 @@ const NavBar = () => {
       <Link href="/">My Blog</Link>
       <ul className="flex space-x-6">
         {links.map((link) => (
-          <Link
-            key={link.href}
-            className={classNames({
-              "text-zinc-950": link.href === currentPath,
-              "text-zinc-500": link.href !== currentPath,
-              "hover:text-zinc-800 transition-colors": true,
-            })}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
+          <li key={link.href}>
+            <Link
+              className={classNames({
+                "text-zinc-950": link.href === currentPath,
+                "text-zinc-500": link.href !== currentPath,
+                "hover:text-zinc-800 transition-colors": true,
+              })}
+              href={link.href}
+            >
+              {link.label}
+            </Link>
+          </li>
         ))}
       </ul>
-      <SearchInput />
+      <Box>
+        {status === "authenticated" && (
+          <Link href="/api/auth/signout">Log out</Link>
+        )}
+
+        {status === "unauthenticated" && (
+          <Link href="/api/auth/signin">Login</Link>
+        )}
+      </Box>
     </nav>
   );
 };
