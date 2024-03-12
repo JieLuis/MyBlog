@@ -14,6 +14,7 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import { Issue } from "@prisma/client";
 import SimpleMDE from "react-simplemde-editor";
+import AssigneeSelect from "@/app/api/blogs/[id]/AssigneeSelect";
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
@@ -72,6 +73,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           {issue ? "Update Issue" : "Submit New Issue"}{" "}
           {isSubmitting && <Spinner />}
         </Button>
+        <AssigneeSelect />
       </form>
     </div>
   );
