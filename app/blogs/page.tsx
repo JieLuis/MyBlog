@@ -5,10 +5,11 @@ import prisma from "@/prisma/client";
 import delay from "delay";
 import IssueActions from "./IssueActions";
 import { Issue, Status } from "@prisma/client";
-import BlogTable, { BlogQuery } from "@/app/blogs/blogTable";
+import BlogTable, { BlogQuery } from "@/app/blogs/BlogTable";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
 import Pagination from "../components/Pagination";
-import { columnNames } from "@/app/blogs/blogTable";
+import { columnNames } from "@/app/blogs/BlogTable";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: BlogQuery;
@@ -55,4 +56,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
 };
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Blogs List",
+  description: "View all of my blogs",
+};
 export default IssuesPage;
