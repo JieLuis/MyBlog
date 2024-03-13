@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
 import BlogSummary from "./BlogSummary";
 import LatestBlogs from "./LatestBlogs";
+import BlogChart from "./BlogChart";
 
 export default async function Home() {
   const open = await prisma.issue.count({
@@ -15,7 +16,7 @@ export default async function Home() {
   return (
     <>
       <LatestBlogs />
-      <BlogSummary open={open} inProgress={inProgress} closed={closed} />
+      <BlogChart open={open} inProgress={inProgress} closed={closed} />
     </>
   );
 }
