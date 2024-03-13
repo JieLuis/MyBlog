@@ -13,7 +13,7 @@ interface Props {
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
-  const columns: { label: String; value: keyof Issue; className?: String }[] = [
+  const columns: { label: string; value: keyof Issue; className?: string }[] = [
     { label: "Blog", value: "title" },
     { label: "Status", value: "status", className: "hidden md:table-cell" },
     { label: "Created", value: "createdAt", className: "hidden md:table-cell" },
@@ -46,7 +46,10 @@ const IssuesPage = async ({ searchParams }: Props) => {
         <Table.Header>
           <Table.Row>
             {columns.map((column) => (
-              <Table.ColumnHeaderCell key={column.value}>
+              <Table.ColumnHeaderCell
+                key={column.value}
+                className={column.className}
+              >
                 <NextLink
                   href={{
                     query: { ...searchParams, orderBy: column.value },
@@ -59,13 +62,6 @@ const IssuesPage = async ({ searchParams }: Props) => {
                 )}
               </Table.ColumnHeaderCell>
             ))}
-            <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell">
-              Status
-            </Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell">
-              Created
-            </Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
