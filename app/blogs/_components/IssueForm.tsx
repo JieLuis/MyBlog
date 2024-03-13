@@ -72,7 +72,6 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           {issue ? "Update Issue" : "Submit New Issue"}{" "}
           {isSubmitting && <Spinner />}
         </Button>
-        <AssigneeSelect />
       </form>
     </div>
   );

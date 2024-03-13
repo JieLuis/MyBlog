@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function GET(request: NextRequest) {
-  prisma.user.findMany();
+export async function GET(request: NextRequest) {
+  const users = await prisma.user.findMany({ orderBy: { name: "asc" } });
+  return NextResponse.json(users);
 }
